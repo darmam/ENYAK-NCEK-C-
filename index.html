@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En Yakın Oto Çekici & Kurtarma - 7/24 Hızlı Yol Yardım</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent-gold: #f59e0b;
+            --accent-gold-hover: #d97706;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* TOP BANNER / NAVIGATION */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            background: linear-gradient(135deg, var(--accent-gold), #b45309);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #000;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .brand-text {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .brand-text span {
+            color: var(--accent-gold);
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 8% 80px;
+            background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.12) 0%, rgba(15, 23, 42, 0) 70%);
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 40px;
+        }
+
+        /* FEATURES COUNTER GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .stat-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* SECTION TITLE */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-light);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        /* SERVICES GRID - NEW DESIGN */
+        .services-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .service-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-box:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.15);
+        }
+
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .box-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.08);
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .service-box:hover .box-num {
+            color: rgba(245, 158, 11, 0.25);
+        }
+
+        .box-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .service-box h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .service-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        /* NEON GOLD ACTION BUTTON */
+        .btn-gold {
+            width: 100%;
+            background: transparent;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .service-box:hover .btn-gold {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-gold svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-gold:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* INFOGRAPHIC PROCESS SECTION */
+        .process-section {
+            background: #090d16;
+            padding: 80px 8%;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 80px;
+        }
+
+        .process-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .process-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .process-badge {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+
+        .process-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 8%;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-dark);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="brand-icon">EY</div>
+            <div class="brand-text">EN YAKIN <span>OTO ÇEKİCİ</span></div>
+        </div>
+        <div class="status-pill">
+            <div class="status-dot"></div>
+            Sistem Aktif & Saha Ekibi Hazır
+        </div>
+    </header>
+
+    <section class="hero">
+        <span class="hero-tag">7/24 Kesintisiz Oto Kurtarma</span>
+        <h1>Yolda Kaldığınızda En Yakın Çekici Yanınızda</h1>
+        <p>enyakinotocekiciotokurtarma.com.tr altyapısı ile konumunuza en yakın tam donanımlı kurtarıcı araçlarımızı anında yönlendiriyoruz.</p>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">15 Dk</span>
+                <span class="stat-label">Ortalama Varış Süresi</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">%100</span>
+                <span class="stat-label">Kaskolu Güvenli Taşıma</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">7/24</span>
+                <span class="stat-label">Gece & Gündüz Saha Desteği</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-header">
+        <h2>Kurumsal Hizmet Portföyümüz</h2>
+        <p>Her türlü araç segmenti için özel donanımlı taşıma çözümleri</p>
+    </div>
+
+    <div class="services-wrapper">
+        <div class="service-box">
+            <div>
+                <div class="box-header">
+                    <div class="box-icon">⚡</div>
+                    <span class="box-num">01</span>
+                </div>
+                <h3>Acil Oto Çekici</h3>
+                <p>Aniden gelişen arıza, motor kilitlenmesi veya yol aksamalarında en yakın konumdaki modern çekici aracımızın sevk edilmesi.</p>
+            </div>
+            <a href="#bilgi" class="btn-gold">
+                Hizmet Detayı 
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+        <div class="service-box">
+            <div>
+                <div class="box-header">
+                    <div class="box-icon">🚨</div>
+                    <span class="box-num">02</span>
+                </div>
+                <h3>Ağır Hasarlı Araç Kurtarma</h3>
+                <p>Trafik kazası veya yoldan çıkma durumlarında özel vinç ve ahtapot aparatlar ile araca ek zarar vermeden kurtarma işlemi.</p>
+            </div>
+            <a href="#bilgi" class="btn-gold">
+                Hizmet Detayı 
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+        <div class="service-box">
+            <div>
+                <div class="box-header">
+                    <div class="box-icon">🏎️</div>
+                    <span class="box-num">03</span>
+                </div>
+                <h3>Lüks & Basık Araç Nakli</h3>
+                <p>Sıfır dereceye yakın açı alan hidrolik kayar kasa sistemlerimiz sayesinde basık ve spor araçlar için sıfır temaslı taşıma.</p>
+            </div>
+            <a href="#bilgi" class="btn-gold">
+                Hizmet Detayı 
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+        <div class="service-box">
+            <div>
+                <div class="box-header">
+                    <div class="box-icon">🏙️</div>
+                    <span class="box-num">04</span>
+                </div>
+                <h3>Şehirler Arası Araç Transferi</h3>
+                <p>İller arası araç alım-satım, muayene veya servis transferlerinizde tam kasko poliçesi güvencesinde şehirler arası taşıma.</p>
+            </div>
+            <a href="#bilgi" class="btn-gold">
+                Hizmet Detayı 
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+        <div class="service-box">
+            <div>
+                <div class="box-header">
+                    <div class="box-icon">🔋</div>
+                    <span class="box-num">05</span>
+                </div>
+                <h3>Yerinde Akü & Yakıt Takviyesi</h3>
+                <p>Akü bitmesi veya yakıt tükenmesi durumlarında bulunduğunuz konuma anında teknik ekip ve orijinal akü takviye ekipmanı sevki.</p>
+            </div>
+            <a href="#bilgi" class="btn-gold">
+                Hizmet Detayı 
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+        <div class="service-box">
+            <div>
+                <div class="box-header">
+                    <div class="box-icon">🚐</div>
+                    <span class="box-num">06</span>
+                </div>
+                <h3>Ticari Araç & Minibüs Çekici</h3>
+                <p>Yüksek tonajlı ticari araçlar, panelvan ve minibüs grupları için güçlendirilmiş forklift ve aparatlı çekici desteği.</p>
+            </div>
+            <a href="#bilgi" class="btn-gold">
+                Hizmet Detayı 
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <section class="process-section">
+        <div class="section-header">
+            <h2>Süreç Nasıl İşler?</h2>
+            <p>Hızlı ve şeffaf operasyon adımları</p>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-badge">1</div>
+                <h4>Talep Oluşturma</h4>
+                <p>Yolda kaldığınız konumu ve araç durumunu belirtin.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-badge">2</div>
+                <h4>En Yakın Ekip Analizi</h4>
+                <p>Sisteme bağlı size en yakın araç anında tespit edilir.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-badge">3</div>
+                <h4>Saha Yönlendirmesi</h4>
+                <p>Ekibimiz en kısa sürede adresinize intikal eder.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-badge">4</div>
+                <h4>Güvenli Nakil</h4>
+                <p>Aracınız kaskolu olarak dilediğiniz noktaya taşınır.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 enyakinotocekiciotokurtarma.com.tr - Tüm Hakları Saklıdır. Kurumsal Yol Yardım Hizmetleri.</p>
+    </footer>
+
+</body>
+</html>
